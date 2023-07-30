@@ -35,5 +35,5 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: ebpf-output-log
-          path: $GITHUB_WORKSPACE/artifacts/ebpf-output.txt
+          path: artifacts/ebpf-output.txt
           retention-days: 5
