@@ -20,15 +20,15 @@ def execute_ebpf(output_file: str) -> bool:
     Create a subprocess to invoke bootstrap, and time it out after 10s
     """
     try:
-        bootstrap = subprocess.Popen(
-            args=["./bootstrap"],
+        subprocess.run(
+            args=["./bootstrap &"],
             shell=True,
+            check=True,
             text=True,
         )
         time.sleep(1)
-        subprocess.run(args=['whoami'], check=True)
+        subprocess.run(args=['whoami'], shell=True, check=True, text=True)
         time.sleep(1)
-        bootstrap.terminate()
     except Exception: # pylint: disable=broad-exception-caught
         return False
     return True
