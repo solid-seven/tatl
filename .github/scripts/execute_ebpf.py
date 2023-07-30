@@ -11,8 +11,7 @@ def execute_ebpf() -> bool:
         args=[
             "timeout",
             "10s",
-            "$GITHUB_WORKSPACE/libbpf-bootstrap/examples/c/bootstrap " \
-            "> $GITHUB_WORKSPACE/ebpf-output.log",
+            "./bootstrap > $GITHUB_WORKSPACE/ebpf-output.log",
         ],
         shell=True,
         check=False,
