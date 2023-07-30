@@ -34,6 +34,6 @@ jobs:
       - name: Archive output logs
         uses: actions/upload-artifact@v3
         with:
-          name: ebpf-output-log
+          name: ebpf-output
           path: artifacts/ebpf-output.txt
           retention-days: 5

@@ -18,21 +18,16 @@ def execute_ebpf(output_file: str) -> bool:
     """
     Create a subprocess to invoke bootstrap, and time it out after 10s
     """
-    output_fp = open(output_file, mode='a', encoding='utf-8')
     try:
         results = subprocess.run(
-            args=["./bootstrap"],
-            stdout=output_fp,
-            stderr=subprocess.STDOUT,
+            args=[f"./bootstrap > {output_file}"],
             shell=True,
             check=False,
             text=True,
             timeout=10
         )
     except subprocess.TimeoutExpired:
-        output_fp.close()
         return True
-    output_fp.close()
     if results.returncode == 0:
         return True
     return False
