@@ -8,13 +8,10 @@ def execute_ebpf() -> bool:
     Create a subprocess to invoke bootstrap, and time it out after 10s
     """
     results = subprocess.run(
-        args=[
-            "timeout",
-            "10s",
-            "./bootstrap > $GITHUB_WORKSPACE/ebpf-output.log",
-        ],
+        args=["./bootstrap > $GITHUB_WORKSPACE/ebpf-output.log"],
         shell=True,
         check=False,
+        timeout=10
     )
     if results.returncode in [0, 124]:
         return True

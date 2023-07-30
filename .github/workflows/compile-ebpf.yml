@@ -24,10 +24,11 @@ jobs:
         run: |
           cd $GITHUB_WORKSPACE/libbpf-bootstrap/examples/c;
           make;
+          sudo chmod +x bootstrap;
       - name: Execute bootstrap
         run: |
           cd $GITHUB_WORKSPACE/libbpf-bootstrap/examples/c;
-          sudo python $GITHUB_WORKSPACE/tatl/.github/scripts/execute_ebpf.py
+          sudo python $GITHUB_WORKSPACE/tatl/.github/scripts/execute_ebpf.py;
       - name: Archive output logs
         uses: actions/upload-artifact@v3
         with:
