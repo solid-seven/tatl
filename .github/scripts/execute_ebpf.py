@@ -21,7 +21,7 @@ def execute_ebpf(output_file: str) -> bool:
     """
     try:
         bootstrap = subprocess.Popen(
-            args=[f"./bootstrap > {output_file}"],
+            args=["./bootstrap"],
             shell=True,
             text=True,
         )
