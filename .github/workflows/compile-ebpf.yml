@@ -22,4 +22,10 @@ jobs:
       - name: Execute bootstrap
         run: |
           cd $GITHUB_WORKSPACE/libbpf-bootstrap/examples/c;
-          sudo ./bootstrap
+          sudo timeout 10s ./bootstrap > $GITHUB_WORKSPACE/ebpf-output.log;
+      - name: Archive output logs
+        uses: actions/upload-artifact@v3
+        with:
+          name: ebpf-output-log
+          path: $GITHUB_WORKSPACE/ebpf-output.log
+          retention-days: 5
