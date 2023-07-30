@@ -1,0 +1,22 @@
+name: compile-ebpf
+run-name: ${{ github.actor }} is learning GitHub Actions
+on:
+  pull_request:
+    branches: ['**']
+jobs:
+  compile-libbpf-bootstrap:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install dependencies
+        run: sudo apt install clang libelf1 libelf-dev zlib1g-dev -y
+      - name: Clone libbpf-bootstrap
+        uses: actions/checkout@v3
+        with:
+          repository: libbpf/libbpf-bootstrap
+          submodules: recursive
+      - name: Compile libbpf-bootstrap
+        run: |
+          cd $GITHUB_WORKSPACE/libbpf-bootstrap/examples/c;
+          make;
+      - name: Execute bootstrap
+        run: sudo ./bootstrap
