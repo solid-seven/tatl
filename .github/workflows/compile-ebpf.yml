@@ -14,9 +14,10 @@ jobs:
         with:
           repository: libbpf/libbpf-bootstrap
           submodules: recursive
+          path: repos
       - name: Compile libbpf-bootstrap
         run: |
-          cd $GITHUB_WORKSPACE/libbpf-bootstrap/examples/c;
+          cd $GITHUB_WORKSPACE/repos/libbpf-bootstrap/examples/c;
           make;
       - name: Execute bootstrap
         run: sudo ./bootstrap
