@@ -29,6 +29,7 @@ jobs:
         run: |
           cd $GITHUB_WORKSPACE/libbpf-bootstrap/examples/c;
           sudo python $GITHUB_WORKSPACE/tatl/.github/scripts/execute_ebpf.py;
+          cat $GITHUB_WORKSPACE/libbpf-bootstrap/examples/c/ebpf-output.txt;
       - name: Archive output logs
         uses: actions/upload-artifact@v3
         with:
