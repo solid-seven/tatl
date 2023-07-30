@@ -11,7 +11,9 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: solid-seven/tatl
-          path: tatl
+          path: tatl-clone
+      - name: Show workspace contents
+        run: ls $GITHUB_WORKSPACE
       - name: Install dependencies
         run: sudo apt install clang libelf1 libelf-dev zlib1g-dev -y
       - name: Clone libbpf-bootstrap
@@ -25,7 +27,7 @@ jobs:
           cd $GITHUB_WORKSPACE/libbpf-bootstrap/examples/c;
           make;
       - name: Execute bootstrap
-        run: python $GITHUB_WORKSPACE/tatl/.github/scripts/execute-ebpf.py
+        run: python $GITHUB_WORKSPACE/tatl-clone/.github/scripts/execute-ebpf.py
       - name: Archive output logs
         uses: actions/upload-artifact@v3
         with:
