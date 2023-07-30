@@ -28,11 +28,10 @@ jobs:
       - name: Execute bootstrap
         run: |
           cd $GITHUB_WORKSPACE/libbpf-bootstrap/examples/c;
-          sudo python $GITHUB_WORKSPACE/tatl/.github/scripts/execute_ebpf.py;
-          cat $GITHUB_WORKSPACE/libbpf-bootstrap/examples/c/ebpf-output.txt;
+          sudo python $GITHUB_WORKSPACE/tatl/.github/scripts/execute_ebpf.py -o $GITHUB_WORKSPACE/ebpf-output.txt;
       - name: Archive output logs
         uses: actions/upload-artifact@v3
         with:
           name: ebpf-output-log
-          path: $GITHUB_WORKSPACE/libbpf-bootstrap/examples/c/ebpf-output.txt
+          path: $GITHUB_WORKSPACE/ebpf-output.txt
           retention-days: 5
