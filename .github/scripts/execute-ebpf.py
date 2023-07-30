@@ -5,11 +5,10 @@ import sys
 def execute_ebpf() -> bool:
     results = subprocess.run(
         args=[
+            "sudo",
             "timeout",
             "10s",
-            "$GITHUB_WORKSPACE/libbpf-bootstrap/examples/c/bootstrap",
-            ">",
-            "$GITHUB_WORKSPACE/ebpf-output.log"
+            "$GITHUB_WORKSPACE/libbpf-bootstrap/examples/c/bootstrap > $GITHUB_WORKSPACE/ebpf-output.log"
         ],
         shell=True
     )
