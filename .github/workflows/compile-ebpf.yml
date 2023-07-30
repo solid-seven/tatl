@@ -13,7 +13,7 @@ jobs:
           repository: solid-seven/tatl
           path: tatl-clone
       - name: Show workspace contents
-        run: ls $GITHUB_WORKSPACE
+        run: ls $GITHUB_WORKSPACE/tatl-clone
       - name: Install dependencies
         run: sudo apt install clang libelf1 libelf-dev zlib1g-dev -y
       - name: Clone libbpf-bootstrap
