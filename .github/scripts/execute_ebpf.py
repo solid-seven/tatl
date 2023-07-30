@@ -21,14 +21,13 @@ def execute_ebpf(output_file: str) -> bool:
     """
     try:
         subprocess.run(
-            args=["./bootstrap &"],
+            args=[f"./bootstrap > {output_file} &"],
             shell=True,
-            check=True,
-            text=True,
+            check=True
         )
-        time.sleep(1)
-        subprocess.run(args=['whoami'], shell=True, check=True, text=True)
-        time.sleep(1)
+        for _ in range(10):
+            time.sleep(1)
+            subprocess.run(args=['ls'], shell=True, check=True)
     except Exception: # pylint: disable=broad-exception-caught
         return False
     return True
