@@ -7,6 +7,8 @@ jobs:
   compile-libbpf-bootstrap:
     runs-on: ubuntu-latest
     steps:
+      - name: Create directory for artifacts
+        run: sudo mkdir $GITHUB_WORKSPACE/artifacts
       - name: Clone tatl
         uses: actions/checkout@v3
         with:
