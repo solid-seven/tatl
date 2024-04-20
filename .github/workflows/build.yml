@@ -34,4 +34,4 @@ jobs:
                 go get github.com/cilium/ebpf/cmd/bpf2go
                 go generate
                 go build
-                sudo ./tatl
+                timeout --kill-after=10 5s ./tatl
