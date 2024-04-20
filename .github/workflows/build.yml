@@ -28,7 +28,6 @@ jobs:
               uses: actions/checkout@v4
             - name: Build project
               run: |
-                cd ${{ github.workspace }}/tatl
                 go mod init tatl
                 go mod tidy
                 go get github.com/cilium/ebpf/cmd/bpf2go
