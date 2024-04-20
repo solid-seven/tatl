@@ -34,4 +34,8 @@ jobs:
                 go get github.com/cilium/ebpf/cmd/bpf2go
                 go generate
                 go build
-                timeout --kill-after=10 5s ./tatl
+            - name: Upload build artifact
+              uses: actions/upload-artifact@v4
+              with:
+                name: tatl-${{ github.sha }}
+                path: ./tatl
