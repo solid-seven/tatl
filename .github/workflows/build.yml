@@ -24,3 +24,14 @@ jobs:
             - name: Print golang version
               run: |
                 go version
+            - name: Checkout branch
+              uses: actions/checkout@v4
+            - name: Build project
+              run: |
+                cd tatl
+                go mod init tatl
+                go mod tidy
+                go get github.com/cilium/ebpf/cmd/bpf2go
+                go generate
+                go build
+                sudo ./tatl
