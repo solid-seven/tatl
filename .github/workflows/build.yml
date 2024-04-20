@@ -13,7 +13,7 @@ jobs:
                 sudo apt update
                 sudo apt-get install clang -y
                 sudo apt-get install llvm -y
-                sudo apt-get install libbpf-dev -7
+                sudo apt-get install libbpf-dev -y
                 sudo apt-get install linux-headers-$(uname -r) -y
                 sudo ln -s /usr/include/x86_64-linux-gnu/asm /usr/include/asm
             - name: Install golang
